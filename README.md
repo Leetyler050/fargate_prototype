@@ -1,11 +1,10 @@
-# terraform-github-workflow
-
-Use this command to avoid tracking unnessary terraform tracking files:
-git filter-branch -f --index-filter 'git rm --cached -r --ignore-unmatch .terraform/'
-
 # Terraform GitHub Workflow
 
 This repository contains code and configuration files for creating an AWS VPC using Terraform and GitHub Actions.
+
+## Note*
+Use this command to avoid tracking unnessary terraform tracking files:
+git filter-branch -f --index-filter 'git rm --cached -r --ignore-unmatch .terraform/'
 
 ## Prerequisites
 
