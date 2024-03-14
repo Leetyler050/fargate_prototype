@@ -51,7 +51,7 @@ To get started with this application, follow these steps:
 
 ## GitHub Actions Workflow
 
-This repository includes a GitHub Actions workflow that automatically runs Terraform whenever changes are pushed to the `main` branch. The workflow is defined in the `.github/workflows/terraform.yml` file.
+This repository includes a GitHub Actions workflow that automatically runs Terraform whenever changes are pushed to the `main` branch. The workflow is defined in the `.github/workflows/terraform.yaml` file.
 
 The workflow performs the following steps:
 
@@ -60,7 +60,7 @@ The workflow performs the following steps:
 3. Runs `terraform init` to initialize the Terraform project.
 4. Runs `terraform apply` to create or update the AWS VPC.
 
-You can customize the workflow to fit your specific needs by modifying the `.github/workflows/terraform.yml` file.
+You can customize the workflow to fit your specific needs by modifying the `.github/workflows/terraform.yaml` file.
 
 ## Cleanup
 
