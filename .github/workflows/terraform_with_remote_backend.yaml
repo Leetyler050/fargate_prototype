@@ -1,4 +1,4 @@
-name: Terraform setup remote state backend
+name: Terraform With Remote Backend
 
 on: 
   workflow_dispatch:
