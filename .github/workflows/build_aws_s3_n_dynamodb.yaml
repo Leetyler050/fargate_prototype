@@ -1,6 +1,7 @@
 name: Terraform setup remote state backend
 
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
     branches:
       - main
     paths:
