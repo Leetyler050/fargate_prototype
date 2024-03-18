@@ -34,7 +34,7 @@ jobs:
 
       - name: Configure remote backend
         run: |
-          terraform init -backend-config="github-actions-test-s3-bucket" \
+          terraform init -backend-config="bucket=github-actions-test-s3-bucket" \
                          -backend-config="key=terraform.tfstate" \
                          -backend-config="region=us-west-2"
 
