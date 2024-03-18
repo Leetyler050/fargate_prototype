@@ -37,12 +37,12 @@ jobs:
         run: terraform init
 
       - name: Terraform format
-       id: fmt
-       run: terraform fmt #-check
+        id: fmt
+        run: terraform fmt
     
       - name: Terraform validate
-       id: validate
-       run: terraform validate
+        id: validate
+        run: terraform validate
 
       - name: Terraform Apply
         id: apply
