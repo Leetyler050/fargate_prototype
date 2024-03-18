@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        shell: zsh
+        shell: bash
         # We keep Terraform files in the terraform directory.
         working-directory: ./build_remote_backend
 
