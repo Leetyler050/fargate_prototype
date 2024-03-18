@@ -13,6 +13,7 @@ env:
  # Credentials for deployment to AWS
  AWS_ACCESS_KEY_ID: ${{ secrets.TERRAFORM_AWS_KEY_ID }}
  AWS_SECRET_ACCESS_KEY: ${{ secrets.TERRAFORM_AWS_SECRET_KEY }}
+ AWS_DEFAULT_REGION: us-west-2
 
 jobs:
   terraform:
