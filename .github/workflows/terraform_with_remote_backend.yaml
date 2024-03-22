@@ -7,12 +7,15 @@ on:
     paths:
       - terraform/**
 
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
 env:
  # verbosity setting for Terraform logs
- # TF_LOG: INFO
+ TF_LOG: INFO
  # Credentials for deployment to AWS
- AWS_ACCESS_KEY_ID: ${{ secrets.TERRAFORM_AWS_KEY_ID }}
- AWS_SECRET_ACCESS_KEY: ${{ secrets.TERRAFORM_AWS_SECRET_KEY }}
  AWS_DEFAULT_REGION: us-west-2
 
 jobs:
@@ -28,7 +31,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Terraform
+      - name: Configure AWS credentials from AWS account
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: arn:aws:iam::226109441954:role/terraform_oidc_system_admin
+          aws-region: us-west-2
+          role-session-name: Github-OIDC-TERRAFORM
+
+      - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: "1.7.5" 
