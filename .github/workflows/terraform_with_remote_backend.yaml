@@ -9,8 +9,9 @@ on:
 
 permissions:
   contents: read
-  pull-requests: write
-  issues: write
+  id-token: write
+#   pull-requests: write
+#   issues: write
 
 env:
  # verbosity setting for Terraform logs
@@ -32,9 +33,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Configure AWS credentials from AWS account
-        uses: aws-actions/configure-aws-credentials@v2
+        uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::226109441954:role/terraform_oidc_system_admin
+          role-to-assume: arn:aws:iam::226109441954:role/Github_OIDC_Test
           aws-region: us-west-2
           role-session-name: Github-OIDC-TERRAFORM
 
