@@ -7,11 +7,11 @@ on:
     paths:
       - terraform/**
 
-env:
- # verbosity setting for Terraform logs
- TF_LOG: INFO
- # Credentials for deployment to AWS
- AWS_DEFAULT_REGION: us-west-2
+# env:
+#  # verbosity setting for Terraform logs
+#  TF_LOG: INFO
+#  # Credentials for deployment to AWS
+#  AWS_DEFAULT_REGION: us-west-2
 
 jobs:
   terraform:
@@ -34,7 +34,6 @@ jobs:
         with:
           role-to-assume: arn:aws:iam::226109441954:role/Github_OIDC_Test
           aws-region: us-west-2
-          #role-session-name: Github-OIDC-TERRAFORM
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
