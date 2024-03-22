@@ -7,12 +7,6 @@ on:
     paths:
       - terraform/**
 
-permissions:
-  contents: read
-  id-token: write
-#   pull-requests: write
-#   issues: write
-
 env:
  # verbosity setting for Terraform logs
  TF_LOG: INFO
@@ -21,6 +15,9 @@ env:
 
 jobs:
   terraform:
+    permissions:
+        contents: read
+        id-token: write
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -37,7 +34,7 @@ jobs:
         with:
           role-to-assume: arn:aws:iam::226109441954:role/Github_OIDC_Test
           aws-region: us-west-2
-          role-session-name: Github-OIDC-TERRAFORM
+          #role-session-name: Github-OIDC-TERRAFORM
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
