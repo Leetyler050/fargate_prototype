@@ -7,11 +7,11 @@ on:
     paths:
       - terraform/**
 
-# env:
-#  # verbosity setting for Terraform logs
-#  TF_LOG: INFO
-#  # Credentials for deployment to AWS
-#  AWS_DEFAULT_REGION: us-west-2
+env:
+ # verbosity setting for Terraform logs
+ TF_LOG: INFO
+ # Credentials for deployment to AWS
+ AWS_DEFAULT_REGION: us-west-2
 
 jobs:
   terraform:
