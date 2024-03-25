@@ -8,10 +8,7 @@ on:
       - terraform/**
 
 env:
- # verbosity setting for Terraform logs
     TF_DIR: ./terraform
-#  # Credentials for deployment to AWS
-#  AWS_DEFAULT_REGION: us-west-2
 
 jobs:
   terraform:
@@ -22,7 +19,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        # We keep Terraform files in the terraform d irectory.
+        # We keep Terraform files in the terraform directory.
         working-directory: ./terraform
 
     steps:
