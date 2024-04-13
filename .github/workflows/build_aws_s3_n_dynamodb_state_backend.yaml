@@ -7,7 +7,7 @@ on:
     paths:
       - build_remote_backend/**
 
-env:
+ # env:
  # verbosity setting for Terraform logs
  # TF_LOG: INFO
  # Credentials for deployment to AWS
