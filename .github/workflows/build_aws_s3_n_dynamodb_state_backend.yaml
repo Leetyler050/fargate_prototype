@@ -11,8 +11,8 @@ env:
  # verbosity setting for Terraform logs
  # TF_LOG: INFO
  # Credentials for deployment to AWS
- AWS_ACCESS_KEY_ID: ${{ secrets.TERRAFORM_AWS_KEY_ID }}
- AWS_SECRET_ACCESS_KEY: ${{ secrets.TERRAFORM_AWS_SECRET_KEY }}
+ # AWS_ACCESS_KEY_ID: ${{ secrets.TERRAFORM_AWS_KEY_ID }}
+ # AWS_SECRET_ACCESS_KEY: ${{ secrets.TERRAFORM_AWS_SECRET_KEY }}
 
 jobs:
   terraform:
@@ -26,6 +26,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Configure AWS credentials from AWS account
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::226109441954:role/github_oidc_admin_test
+          aws-region: us-west-2
 
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v3
