@@ -1,4 +1,4 @@
-name: arn terraform test
+name: terraform fargate github actions
 
 on: 
   workflow_dispatch:
@@ -39,8 +39,8 @@ jobs:
 
       - name: Configure remote backend
         run: |
-          terraform init -backend-config="bucket=ecs-fargate-terraform-remote-state-testing" \
-                         -backend-config="key=terraform.tfstate" \
+          terraform init -backend-config="bucket=github-actions-test-terraform-docker-ecr-ecs-fargate" \
+                         -backend-config="key=fargate_test/terraform.tfstate" \
                          -backend-config="region=us-west-2"
 
       - name: Terraform format
