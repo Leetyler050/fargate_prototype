@@ -10,7 +10,10 @@ output "private_subnets" {
   ])
 }
 
- output "aws_security_group_eks_cluster_id" {
-    value       = aws_security_group.eks_cluster.id
-    description = "Name of the EKS cluster"
+output "vpc_id" {
+  value = aws_vpc.vpc.id
+}
+
+output "vpc_cidr" {
+  value = aws_vpc.vpc.cidr_block 
 }

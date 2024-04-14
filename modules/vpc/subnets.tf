@@ -10,7 +10,7 @@ resource "aws_subnet" "public" {
   cidr_block = cidrsubnet(aws_vpc.vpc.cidr_block, 4, each.value)
 
   tags = {
-    Name        = "${var.project_name}-public-subnet"
+    Name        = "${var.project_name}-public-subnet-${each.value}"
     Project     = var.project_name
     Role        = "public"
     Environment = var.infrastructure_environment
@@ -32,7 +32,7 @@ resource "aws_subnet" "private" {
   cidr_block = cidrsubnet(aws_vpc.vpc.cidr_block, 4, each.value)
 
   tags = {
-    Name        = "${var.project_name}-private-subnet"
+    Name        = "${var.project_name}-private-subnet-${each.value}"
     Project     = var.project_name
     Role        = "private"
     Environment = var.infrastructure_environment

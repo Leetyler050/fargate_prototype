@@ -3,6 +3,8 @@
 resource "aws_eip" "nat" {
   domain = "vpc"
 
+  associate_with_private_ip = "10.0.0.5"
+
   lifecycle {
     # prevent_destroy = true
   }
@@ -39,4 +41,5 @@ resource "aws_nat_gateway" "ngw" {
     ManagedBy   = "terraform"
     Role        = "private"
   }
+  depends_on = [aws_eip.nat]
 }
