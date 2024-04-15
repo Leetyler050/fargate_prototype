@@ -42,5 +42,5 @@ resource "aws_nat_gateway" "ngw" {
     Role        = "private"
     Description = "Network Address Translation Gateway for ${var.project_name}"
   }
-  depends_on = [aws_eip.nat]
+  depends_on = [aws_eip.nat_eip]
 }
