@@ -1,0 +1,56 @@
+name: terraform fargate github actions
+
+on: 
+  workflow_dispatch:
+    branches:
+      - main
+    paths:
+      - terraform/**
+
+env:
+    TF_DIR: ./terraform
+
+jobs:
+  terraform:
+    permissions:
+        contents: read
+        id-token: write
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        # We keep Terraform files in the terraform directory.
+        working-directory: ./terraform
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials from AWS account
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::226109441954:role/github_oidc_admin_test
+          aws-region: us-west-2
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.7.5" 
+
+      - name: Configure remote backend
+        run: |
+          terraform init -backend-config="bucket=github-actions-test-terraform-docker-ecr-ecs-fargate" \
+                         -backend-config="key=fargate_test/terraform.tfstate" \
+                         -backend-config="region=us-west-2"
+
+      - name: Terraform format
+        id: fmt
+        run: terraform fmt
+    
+      - name: Terraform validate
+        id: validate
+        run: terraform validate
+
+      - name: Terraform Apply
+        id: apply
+        run: terraform apply -auto-approve
