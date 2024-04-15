@@ -13,12 +13,12 @@ module "vpc" {
   project_name               = "github_actions_terraform_docker_ecr_ecs_fargate"
   infrastructure_environment = "development"
   public_subnet_numbers = {
-                            "us-east-2a" = 1
-                            "us-east-2b" = 2
+                            "us-west-2a" = 1
+                            "us-west-2b" = 2
                            }
   private_subnet_numbers = {
-                                "us-east-2a" = 3
-                                "us-east-2b" = 4
+                                "us-west-2a" = 3
+                                "us-west-2b" = 4
                             }
 }
 
