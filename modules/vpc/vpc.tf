@@ -5,9 +5,10 @@ resource "aws_vpc" "vpc" {
   enable_dns_hostnames = "true"
 
   tags = {
-    Name        = "${var.project_name}-vpc"
+    Name        = "vpc-${var.project_name}"
     Project     = var.project_name
     Environment = var.infrastructure_environment
     ManagedBy   = "terraform"
+    description = "Virtual Private Cloud for ${var.project_name}"
   }
 }

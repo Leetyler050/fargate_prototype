@@ -10,7 +10,7 @@
 module "vpc" {
   source                     = "../modules/vpc"
   aws_region                 = "us-west-2"
-  project_name               = "github_actions_terraform_docker_ecr_ecs_fargate"
+  project_name               = "github-actions-terraform-docker-ecr-ecs-fargate"
   infrastructure_environment = "development"
   public_subnet_numbers = {
                             "us-west-2a" = 1
