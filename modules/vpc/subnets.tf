@@ -1,7 +1,7 @@
 
 # Create 1 public subnets for each AZ within the regional VPC
 resource "aws_subnet" "public" {
-  for_each = var.public_subnet_numbers
+  for_each = var.public_subnet_map
   vpc_id = aws_vpc.vpc.id
   map_public_ip_on_launch = "true"
   availability_zone       = each.key
@@ -22,7 +22,7 @@ resource "aws_subnet" "public" {
 
 # Create 1 private subnets for each AZ within the regional VPC
 resource "aws_subnet" "private" {
-  for_each = var.private_subnet_numbers
+  for_each = var.private_subnet_map
 
   vpc_id                  = aws_vpc.vpc.id
   map_public_ip_on_launch = "false"

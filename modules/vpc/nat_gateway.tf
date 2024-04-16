@@ -9,13 +9,13 @@ resource "aws_eip" "nat_eip" {
   }
 
   tags = {
-    Name        = "elastic-ip-${var.project_name}"
+    Name        = "nat-elastic-ip-${var.project_name}"
     Project     = var.project_name
     Environment = var.infrastructure_environment
     VPC         = aws_vpc.vpc.id
     ManagedBy   = "terraform"
     Role        = "private"
-    escription = "Elastic IP for Network Address Translation Gateway"
+    Description = "Elastic IP for Network Address Translation Gateway"
   }
 }
 
