@@ -15,10 +15,11 @@ module "infrastructure" {
                             }
 }
 
-# module "platform" {
-#   source                     = "../modules/platform"
-#   aws_region                 = "us-west-2"
-#   project_name               = "github-actions-terraform-docker-ecr-ecs-fargate"
-#   infrastructure_environment = "development"
-#   ecs_cluster_name           = "github-actions-terraform-docker-ecr-ecs-fargate"
-# }
+module "platform" {
+  source                     = "../modules/platform"
+  ecs_cluster_name           = "github-actions-terraform-docker-ecr-ecs-fargate"
+  vpc_id                     = module.infrastructure.vpc_id
+  internet_cidr_blocks       = "0.0.0.0/0"#module.infrastructure.vpc_cidr
+  domain_name                = "leetyler050.com"
+  public_subnet_set          = module.infrastructure.public_subnets
+}

@@ -1,7 +1,7 @@
 resource "aws_security_group" "ecs_alb_security_group" {
-  name =        "alb-sg-${var.ecs_cluster_name}"
-  description = "Security group for ALB to traffic for ECS cluster"
-  vpc_id =     "${data.terraform_remote_state.infrastructure.vpc_id}"
+  name        =  "alb-sg-${var.ecs_cluster_name}"
+  description =  "Security group for ALB to traffic for ECS cluster"
+  vpc_id      =  var.vpc_id
 
 
     ingress {
