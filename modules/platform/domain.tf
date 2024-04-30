@@ -16,7 +16,7 @@ resource "aws_route53_record" "ecs_cert_validation_record" {
   name    = tolist(aws_acm_certificate.ecs_domain_certificate.domain_validation_options)[0].resource_record_name
   type    = tolist(aws_acm_certificate.ecs_domain_certificate.domain_validation_options)[0].resource_record_type
   zone_id = data.aws_route53_zone.ecs_domain.zone_id
-  records = [to_list(aws_acm_certificate.ecs_domain_certificate.domain_validation_options)[0].resource_record_value]
+  records = [tolist(aws_acm_certificate.ecs_domain_certificate.domain_validation_options)[0].resource_record_value]
   ttl     = 60
   allow_overwrite = true
 
