@@ -26,7 +26,7 @@ resource "aws_alb_listener" "ecs_alb_https_listener" {
 }
 
 resource "aws_alb_target_group" "ecs_cluster_target_group" {
-    name = "target-group-${var.ecs_cluster_name}"
+    name = "tg-${var.ecs_cluster_name}"
     port = 80
     protocol = "HTTP"
     vpc_id = var.vpc_id
