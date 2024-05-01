@@ -17,7 +17,7 @@ module "infrastructure" {
 
 module "platform" {
   source                     = "../modules/platform"
-  ecs_cluster_name           = "git-act-terra-dock-ecr-ecs-far"
+  ecs_cluster_name           = "git-act-ter-dock-ecr-ecs-far"
   vpc_id                     = module.infrastructure.vpc_id
   internet_cidr_blocks       = "0.0.0.0/0"#module.infrastructure.vpc_cidr
   domain_name                = "leetyler050.com"
