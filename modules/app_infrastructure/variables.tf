@@ -1,0 +1,46 @@
+#application variables for task
+
+variable "ecs_service_name" {
+  description = "The name of the ECS service"
+  type        = string
+}
+
+variable "docker_image_url" {
+  description = "the url of the docker image maybe ecr?"
+  type        = string
+}
+
+variable "memory" {
+  description = "The amount of memory to allocate to the container"
+  type        = string
+}
+
+variable "docker_container_port" {
+  description = "The port the container listens on"
+  type        = number
+}
+
+variable environment {
+  description = "The environment variables to pass to the container"
+  type        = string
+}
+
+variable region {
+  description = "The region to deploy the ECS service"
+  type        = string
+}
+
+variable vpc_id {
+  description = "The VPC to deploy the ECS service"
+  type        = string
+}
+
+variable "vpc_cidr_blocks" {
+    description = "The CIDR blocks to allow traffic from"
+    type        = string
+}
+
+variable "ecs_cluster_name" {
+    description = "The name of the ECS cluster"
+    type        = string
+}

@@ -1,0 +1,27 @@
+[
+    {
+        "name": "${task_definition_name}",
+        "image": "${docker_image_url}",
+        "essential": true,
+        "environment": [
+            {
+                "name": "python_test",
+                "value": "${python_test}"
+        }
+        ],
+        "portMappings": [
+            {
+                "containerPort":${docker_container_port}
+            }
+        ],
+        "logConfiguration": {
+            "logDriver": "awslogs",
+            "option":
+            {
+                "awslogs-group": "LogGroup-${ecs_service_name}",
+                "awslogs-region": "${region}",
+                "awslogs-stream-prefix": "LogGroup-stream-${ecs_service_name}"
+        }
+    }
+}
+]

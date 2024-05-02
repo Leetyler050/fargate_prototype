@@ -1,4 +1,4 @@
-resource "aws_alb" "ecs_cluster_alb" {
+resource "aws_lb" "ecs_cluster_alb" {
     name            = "alb-${var.ecs_cluster_name}"
     internal        = false
     security_groups = [aws_security_group.ecs_alb_security_group.id]
@@ -10,7 +10,7 @@ resource "aws_alb" "ecs_cluster_alb" {
     }
 }
 
-resource "aws_alb_listener" "ecs_alb_https_listener" {
+resource "aws_lb_listener" "ecs_alb_https_listener" {
     load_balancer_arn = aws_alb.ecs_cluster_alb.arn
     port = 443
     protocol = "HTTPS"
@@ -25,7 +25,7 @@ resource "aws_alb_listener" "ecs_alb_https_listener" {
     depends_on  = [aws_alb_target_group.ecs_cluster_target_group]
 }
 
-resource "aws_alb_target_group" "ecs_cluster_target_group" {
+resource "aws_lb_target_group" "ecs_cluster_target_group" {
     name = "tg-${var.ecs_cluster_name}"
     port = 80
     protocol = "HTTP"
