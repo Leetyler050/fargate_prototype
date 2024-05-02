@@ -40,7 +40,17 @@ variable "vpc_cidr_blocks" {
     type        = string
 }
 
+variable "desired_task_number" {
+    description = "The number of tasks to run"
+    type        = number
+}
+
 variable "ecs_cluster_name" {
     description = "The name of the ECS cluster"
     type        = string
+}
+
+variable "public_subnet_set" {
+    description = "The public subnets to deploy the ECS service"
+    type        = set(string)
 }
