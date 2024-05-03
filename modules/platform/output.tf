@@ -1,5 +1,5 @@
-output "ecs_alb_listener_arn" {
-  value = aws_alb_listener.ecs_alb_https_listener.arn
+output "ecs_lb_listener_arn" {
+  value = aws_lb_listener.ecs_lb_https_listener.arn
 }
 
 output "ecs_cluster_name" {

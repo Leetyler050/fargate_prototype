@@ -1,17 +1,17 @@
-resource "aws_lb" "ecs_cluster_alb" {
-    name            = "alb-${var.ecs_cluster_name}"
+resource "aws_lb" "ecs_cluster_lb" {
+    name            = "lb-${var.ecs_cluster_name}"
     internal        = false
-    security_groups = [aws_security_group.ecs_alb_security_group.id]
+    security_groups = [aws_security_group.ecs_lb_security_group.id]
     #subnets = [for subnet in aws_subnet.public : subnet.id]
     subnets         = var.public_subnet_set
 
     tags = {
-        Name = "alb-${var.ecs_cluster_name}"
+        Name = "lb-${var.ecs_cluster_name}"
     }
 }
 
-resource "aws_lb_listener" "ecs_alb_https_listener" {
-    load_balancer_arn = aws_alb.ecs_cluster_alb.arn
+resource "aws_lb_listener" "ecs_lb_https_listener" {
+    load_balancer_arn = aws_lb.ecs_cluster_alb.arn
     port = 443
     protocol = "HTTPS"
     ssl_policy = "ELBSecurityPolicy-TLS13-1-2-2021-06"
@@ -19,10 +19,10 @@ resource "aws_lb_listener" "ecs_alb_https_listener" {
 
     default_action {
         type = "forward"
-        target_group_arn = aws_alb_target_group.ecs_cluster_target_group.arn
+        target_group_arn = aws_lb_target_group.ecs_cluster_target_group.arn
     }
 
-    depends_on  = [aws_alb_target_group.ecs_cluster_target_group]
+    depends_on  = [aws_lb_target_group.ecs_cluster_target_group]
 }
 
 resource "aws_lb_target_group" "ecs_cluster_target_group" {
