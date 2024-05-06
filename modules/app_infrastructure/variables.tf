@@ -54,3 +54,13 @@ variable "public_subnet_set" {
     description = "The public subnets to deploy the ECS service"
     type        = set(string)
 }
+
+variable "ecs_aws_lb_listener_arn" {
+    description = "The name of the load balancer"
+    type        = string
+}
+
+variable "domain_name" {
+    description = "The domain name to use"
+    type        = string
+}

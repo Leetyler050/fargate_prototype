@@ -17,3 +17,7 @@ output "ecs_cluster_role_arn" {
 output "domain_name" {
     value = var.domain_name
 }
+
+output "ecslb_target_group_arn" {
+    value = aws_lb_target_group.ecs_lb_target_group.arn
+}

@@ -27,17 +27,17 @@ module "platform" {
 }
 
 #use the app_infrastructure module
-# module "app_infrastructure" {
-#   source                     = "../modules/app_infrastructure"
-#   ecs_service_name           = "github-actions-terraform-docker-ecr-ecs-fargate"
-#   docker_image_url           = "leetyler050.com/github-actions-terraform-docker-ecr-ecs-fargate"
-#   memory                     = "512"
-#   docker_container_port      = 80
-#   environment                = "development"
-#   region                     = "us-west-2"
-#   vpc_id                     = module.infrastructure.vpc_id
-#   vpc_cidr_blocks            = module.infrastructure.vpc_cidr
-#   desired_task_number        = 1
-#   ecs_cluster_name           = module.platform.ecs_cluster_name
-#   public_subnet_set          = module.infrastructure.public_subnets
+# module "app_infra" {
+#   source = "../modules/app_infrastructure"
+#   ecs_service_name = "fargate-test"
+#   docker_container_port = 8080
+#   memory = 1024
+#   environment = "development"
+#   vpc_id = module.infrastructure.vpc_id
+#   vpc_cidr_blocks = module.infrastructure.vpc_cidr
+#   desired_task_number = 1
+#   ecs_cluster_name = module.platform.ecs_cluster_name
+#   public_subnet_set = module.infrastructure.public_subnets
+#   ecs_aws_lb_listener_arn = module.platform.aws_lb_listener_arn
+#   domain_name = module.platform.domain_name
 # }

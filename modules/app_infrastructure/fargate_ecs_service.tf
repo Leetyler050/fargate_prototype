@@ -12,7 +12,7 @@ resource "aws_ecs_service" "ecs_service" {
     }
 
     load_balancer {
-      container_name = ecs_service_name
+      container_name = var.ecs_service_name
       container_port = var.docker_container_port
       target_group_arn = aws_lb_target_group.ecs_app_target_group.arn
     }

@@ -18,7 +18,7 @@ resource "aws_ecs_task_definition" "ecs_task_definition" {
     network_mode             = "awsvpc"
     cpu                      = 512
     memory                   = var.memory
-    execution_role_arn       = ""
-    task_role_arn            = ""
+    execution_role_arn       = aws_iam_role.fargate_iam_role.arn
+    task_role_arn            = aws_iam_role.fargate_iam_role.arn
 }
 
