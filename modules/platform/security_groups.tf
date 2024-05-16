@@ -43,14 +43,13 @@ resource "aws_security_group" "ecs_alb_security_group" {
 
 # }
 
-resource "aws_security_group" "ecs_alb_security_group_2" {
-  name        =  "alb-sg-${var.ecs_cluster_name}-2"
-  description =  "Security group for ALB to traffic for ECS cluster"
-  vpc_id      =  var.vpc_id
+# resource "aws_security_group" "ecs_alb_security_group_2" {
+#   name        =  "alb-sg-${var.ecs_cluster_name}-2"
+#   description =  "Security group for ALB to traffic for ECS cluster"
+#   vpc_id      =  var.vpc_id
 
+#     ingress = []
 
-    ingress = []
+#     egress = []
 
-    egress = []
-
-}
+# }
