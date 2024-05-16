@@ -64,3 +64,13 @@ variable "domain_name" {
     description = "The domain name to use"
     type        = string
 }
+
+variable "ecr_repo_name" {
+    description = "The name of the ECR repository"
+    type        = string
+}
+
+variable project_name {
+    description = "The name of the project"
+    type        = string
+}
