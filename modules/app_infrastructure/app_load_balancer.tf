@@ -34,28 +34,28 @@ resource "aws_lb_listener_rule" "ecs_lb_listener_rule" {
     }
 }
 
-resource "aws_lb_listener" "ecs_lb_listener_rule" {
-    load_balancer_arn = aws_lb.app_lb.arn
+# resource "aws_lb_listener" "ecs_lb_listener_rule" {
+#     load_balancer_arn = aws_lb.app_lb.arn
 
-    port = 80
-    protocol = "HTTP"
-    default_action {
-        type = "forward"
-        target_group_arn = aws_lb_target_group.ecs_app_target_group.arn
-    }
+#     port = 80
+#     protocol = "HTTP"
+#     default_action {
+#         type = "forward"
+#         target_group_arn = aws_lb_target_group.ecs_app_target_group.arn
+#     }
 
-}
+# }
 
-resource "aws_lb" "app_lb" {
-    name               = "fargate-lb-${var.ecs_service_name}"
-    internal           = false
-    load_balancer_type = "application"
-    security_groups    = [aws_security_group.lb_security_group.id]
-    subnets            = var.public_subnet_set
+# resource "aws_lb" "app_lb" {
+#     name               = "fargate-lb-${var.ecs_service_name}"
+#     internal           = false
+#     load_balancer_type = "application"
+#     security_groups    = [aws_security_group.lb_security_group.id]
+#     subnets            = var.public_subnet_set
 
-    enable_deletion_protection = false
+#     enable_deletion_protection = false
 
-    tags = {
-        Name = "fargate-lb-${var.ecs_service_name}"
-    }
-}
+#     tags = {
+#         Name = "fargate-lb-${var.ecs_service_name}"
+#     }
+# }

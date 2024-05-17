@@ -19,5 +19,9 @@ output "domain_name" {
 }
 
 output "ecslb_target_group_arn" {
-    value = aws_lb_target_group.ecs_lb_target_group.arn
+    value = aws_lb_target_group.ecs_cluster_target_group.arn
 }
+
+# output "ecs_cluster_lb_arn" {
+#     value = aws_lb.app_lb.arn
+# }

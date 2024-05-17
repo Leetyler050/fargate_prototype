@@ -11,7 +11,7 @@ resource "aws_lb" "ecs_cluster_lb" {
 }
 
 resource "aws_lb_listener" "ecs_lb_https_listener" {
-    load_balancer_arn = aws_lb.ecs_cluster_alb.arn
+    load_balancer_arn = aws_lb.ecs_cluster_lb.arn
     port = 443
     protocol = "HTTPS"
     ssl_policy = "ELBSecurityPolicy-TLS13-1-2-2021-06"

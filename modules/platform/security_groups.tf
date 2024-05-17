@@ -1,4 +1,4 @@
-resource "aws_security_group" "ecs_alb_security_group" {
+resource "aws_security_group" "ecs_lb_security_group" {
   name        =  "alb-sg-${var.ecs_cluster_name}"
   description =  "Security group for ALB to traffic for ECS cluster"
   vpc_id      =  var.vpc_id

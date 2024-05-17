@@ -8,7 +8,6 @@ resource "aws_security_group" "lb_security_group" {
         protocol = "TCP"
         to_port = 8050
         cidr_blocks = [var.vpc_cidr_blocks]
-        security_groups = aws
     }
 
     egress {
