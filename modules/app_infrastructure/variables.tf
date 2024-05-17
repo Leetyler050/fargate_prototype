@@ -25,11 +25,6 @@ variable environment {
   type        = string
 }
 
-variable region {
-  description = "The region to deploy the ECS service"
-  type        = string
-}
-
 variable vpc_id {
   description = "The VPC to deploy the ECS service"
   type        = string
