@@ -2,7 +2,7 @@
 #use the infrastructure module
 module "infrastructure" {
   source                     = "../modules/infrastructure"
-  vpc_cidr                   = "10.0.0.0/19"
+  vpc_cidr                   = "10.0.0.0/17"
   aws_region                 = "us-west-2"
   project_name               = "github-actions-terraform-docker-ecr-ecs-fargate"
   infrastructure_environment = "development"
