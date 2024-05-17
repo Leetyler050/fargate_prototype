@@ -3,10 +3,9 @@ data "template_file" "ecs_task_definition_template" {
     vars = {
         task_definition_name = var.ecs_service_name
         ecs_service_name = var.ecs_service_name
-        ecs_cluster_name = var.docker_image_url
+        ecr_repo_name = ecr_repository.app_ecr.repository_url
         memory = var.memory
         docker_container_port = var.docker_container_port
-        environment = var.environment
         region = var.region
     }
 }

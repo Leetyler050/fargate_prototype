@@ -9,7 +9,6 @@ resource "aws_ecr_repository" "app_ecr" {
   }
   tags = {
     Name = var.ecr_repo_name
-    ##Group = var.project_name
   }
 }
 

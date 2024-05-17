@@ -40,4 +40,5 @@ module "platform" {
 #   public_subnet_set = module.infrastructure.public_subnets
 #   ecs_aws_lb_listener_arn = module.platform.aws_lb_listener_arn
 #   domain_name = module.platform.domain_name
+#   ecr_repo_name = "ecr-fargate_test"
 # }
