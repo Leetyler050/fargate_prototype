@@ -16,7 +16,7 @@
         ],
         "logConfiguration": {
             "logDriver": "awslogs",
-            "option":
+            "options":
             {
                 "awslogs-group": "LogGroup-${ecs_service_name}",
                 "awslogs-region": "${region}",

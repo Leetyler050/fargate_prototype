@@ -28,7 +28,7 @@ resource "aws_security_group" "ecs_security_group" {
     vpc_id = var.vpc_id
 
     ingress {
-        from_port = 8050
+        from_port = 0
         protocol = "-1"
         to_port = 0
         cidr_blocks = [var.vpc_cidr_blocks]
