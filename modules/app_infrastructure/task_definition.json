@@ -5,8 +5,8 @@
         "essential": true,
         "environment": [
             {
-                "name": "python_test",
-                "value": "${python_test}"
+                "name": "ecr_fargate_test",
+                "value": "ecr_fargate_test"
         }
         ],
         "portMappings": [
