@@ -1,5 +1,5 @@
 data "template_file" "ecs_task_definition_template" {
-    template = file("${path.module}/ecs_task_definition.json")
+    template = file("${path.module}/task_definition.json")
     vars = {
         task_definition_name = var.ecs_service_name
         ecs_service_name = var.ecs_service_name

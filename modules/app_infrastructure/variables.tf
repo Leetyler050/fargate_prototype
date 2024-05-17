@@ -5,10 +5,10 @@ variable "ecs_service_name" {
   type        = string
 }
 
-variable "docker_image_url" {
-  description = "the url of the docker image maybe ecr?"
-  type        = string
-}
+# variable "docker_image_url" {
+#   description = "the url of the docker image maybe ecr?"
+#   type        = string
+# }
 
 variable "memory" {
   description = "The amount of memory to allocate to the container"
@@ -55,6 +55,11 @@ variable "public_subnet_set" {
     type        = set(string)
 }
 
+variable "private_subnet_set" {
+    description = "The private subnets to deploy the ECS service"
+    type        = set(string)
+}
+
 variable "ecs_aws_lb_listener_arn" {
     description = "The name of the load balancer"
     type        = string
@@ -70,7 +75,13 @@ variable "ecr_repo_name" {
     type        = string
 }
 
-variable project_name {
+variable "project_name" {
     description = "The name of the project"
     type        = string
+}
+
+variable "region" {
+    description = "The region to deploy the ECS service"
+    type        = string
+    default    = "us-west-2"
 }

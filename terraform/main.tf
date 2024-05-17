@@ -27,18 +27,20 @@ module "platform" {
 }
 
 #use the app_infrastructure module
-# module "app_infra" {
-#   source = "../modules/app_infrastructure"
-#   ecs_service_name = "fargate-test"
-#   docker_container_port = 8080
-#   memory = 1024
-#   environment = "development"
-#   vpc_id = module.infrastructure.vpc_id
-#   vpc_cidr_blocks = module.infrastructure.vpc_cidr
-#   desired_task_number = 1
-#   ecs_cluster_name = module.platform.ecs_cluster_name
-#   public_subnet_set = module.infrastructure.public_subnets
-#   ecs_aws_lb_listener_arn = module.platform.aws_lb_listener_arn
-#   domain_name = module.platform.domain_name
-#   ecr_repo_name = "ecr-fargate_test"
-# }
+module "app_infra" {
+  source = "../modules/app_infrastructure"
+  ecs_service_name = "fargate-test"
+  docker_container_port = 8080
+  memory = 512
+  environment = "development"
+  vpc_id = module.infrastructure.vpc_id
+  vpc_cidr_blocks = module.infrastructure.vpc_cidr
+  desired_task_number = 1
+  ecs_cluster_name = module.platform.ecs_cluster_name
+  public_subnet_set = module.infrastructure.public_subnets
+  private_subnet_set = module.infrastructure.private_subnets
+  ecs_aws_lb_listener_arn = module.platform.aws_lb_listener_arn
+  domain_name = module.platform.domain_name
+  ecr_repo_name = "ecr-fargate_test"
+  project_name = "fargate_test"
+}
