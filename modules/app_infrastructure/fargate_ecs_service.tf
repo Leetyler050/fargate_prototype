@@ -8,7 +8,7 @@ resource "aws_ecs_service" "ecs_service" {
     network_configuration {
         #subnets          = var.public_subnet_set #might need to be in the private subnet
         subnets         = var.private_subnet_set
-        security_groups  = [aws_security_group.app_security_group.id]
+        security_groups  = [aws_security_group.ecs_security_group.id]
         assign_public_ip = true
     }
 
