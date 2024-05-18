@@ -31,7 +31,7 @@ module "app_infra" {
   source = "../modules/app_infrastructure"
   ecs_service_name = "fargate-test"
   docker_container_port = 8080
-  memory = 512
+  memory = 1024
   environment = "development"
   vpc_id = module.infrastructure.vpc_id
   vpc_cidr_blocks = module.infrastructure.vpc_cidr
