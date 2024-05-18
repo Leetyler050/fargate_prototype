@@ -1,14 +1,8 @@
-# module "vpc" {
-#     source = "../modules/vpc"
-#     project_name = "github_actions_terraform_docker_ecr_ecs_fargate"
-#     region_aws = "us-west-2"
-#     s3_bucket_name = "github-actions-test-terraform-docker-ecr-ecs-fargate"
-#     dynamodb_name = "github-actions-fargate-test-db"
-# }
 
-#use the vpc module
-module "vpc" {
-  source                     = "../modules/vpc"
+#use the infrastructure module
+module "infrastructure" {
+  source                     = "../modules/infrastructure"
+  vpc_cidr                   = "10.0.0.0/17"
   aws_region                 = "us-west-2"
   project_name               = "github-actions-terraform-docker-ecr-ecs-fargate"
   infrastructure_environment = "development"
@@ -22,3 +16,31 @@ module "vpc" {
                             }
 }
 
+#use the platform module
+module "platform" {
+  source                     = "../modules/platform"
+  ecs_cluster_name           = "git-act-ter-dock-ecr-ecs-far"
+  vpc_id                     = module.infrastructure.vpc_id
+  internet_cidr_blocks       = "0.0.0.0/0"#module.infrastructure.vpc_cidr
+  domain_name                = "leetyler050.com"
+  public_subnet_set          = module.infrastructure.public_subnets
+}
+
+#use the app_infrastructure module
+module "app_infra" {
+  source = "../modules/app_infrastructure"
+  ecs_service_name = "fargate-test"
+  docker_container_port = 8050
+  memory = 1024
+  environment = "development"
+  vpc_id = module.infrastructure.vpc_id
+  vpc_cidr_blocks = module.infrastructure.vpc_cidr
+  desired_task_number = 1
+  ecs_cluster_name = module.platform.ecs_cluster_name
+  public_subnet_set = module.infrastructure.public_subnets
+  private_subnet_set = module.infrastructure.private_subnets
+  ecs_aws_lb_listener_arn = module.platform.ecs_lb_listener_arn
+  domain_name = module.platform.domain_name
+  ecr_repo_name = "ecr-fargate_test"
+  project_name = "fargate_test"
+}

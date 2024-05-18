@@ -1,0 +1,27 @@
+[
+    {
+        "name": "${task_definition_name}",
+        "image": "${ecr_repo_url}",
+        "essential": true,
+        "environment": [
+            {
+                "name": "ecr_fargate_test",
+                "value": "ecr_fargate_test"
+        }
+        ],
+        "portMappings": [
+            {
+                "containerPort":${docker_container_port}
+            }
+        ],
+        "logConfiguration": {
+            "logDriver": "awslogs",
+            "options":
+            {
+                "awslogs-group": "LogGroup-${ecs_service_name}",
+                "awslogs-region": "${region}",
+                "awslogs-stream-prefix": "LogGroup-stream-${ecs_service_name}"
+        }
+    }
+}
+]
