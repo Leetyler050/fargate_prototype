@@ -55,10 +55,10 @@ variable "private_subnet_set" {
     type        = set(string)
 }
 
-variable "ecs_aws_lb_listener_arn" {
-    description = "The name of the load balancer"
-    type        = string
-}
+# variable "ecs_aws_lb_listener_arn" {
+#     description = "The name of the load balancer"
+#     type        = string
+# }
 
 variable "domain_name" {
     description = "The domain name to use"

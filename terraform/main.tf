@@ -39,7 +39,6 @@ module "app_infra" {
   ecs_cluster_name = module.platform.ecs_cluster_name
   public_subnet_set = module.infrastructure.public_subnets
   private_subnet_set = module.infrastructure.private_subnets
-  ecs_aws_lb_listener_arn = module.platform.ecs_lb_listener_arn
   domain_name = module.platform.domain_name
   ecr_repo_name = "ecr-fargate_test"
   project_name = "fargate_test"
