@@ -1,6 +1,6 @@
-output "ecs_lb_listener_arn" {
-  value = aws_lb_listener.ecs_lb_https_listener.arn
-}
+# output "ecs_lb_listener_arn" {
+#   value = aws_lb_listener.ecs_lb_https_listener.arn
+# }
 
 output "ecs_cluster_name" {
     value = aws_ecs_cluster.fargate-cluster.name
