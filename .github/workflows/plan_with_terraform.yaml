@@ -1,4 +1,4 @@
-name: terraform fargate destroy
+name: terraform fargate plan
 
 on: 
   workflow_dispatch:
@@ -50,11 +50,7 @@ jobs:
       - name: Terraform validate
         id: validate
         run: terraform validate
-        
+
       - name: Terraform Plan
         id: plan
         run: terraform plan
-
-      - name: Terraform Destroy
-        id: destroy
-        run: terraform destroy -auto-approve
