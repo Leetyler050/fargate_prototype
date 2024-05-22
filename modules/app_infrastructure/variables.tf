@@ -60,10 +60,10 @@ variable "private_subnet_set" {
 #     type        = string
 # }
 
-variable "domain_name" {
-    description = "The domain name to use"
-    type        = string
-}
+# variable "domain_name" {
+#     description = "The domain name to use"
+#     type        = string
+# }
 
 variable "ecr_repo_name" {
     description = "The name of the ECR repository"
