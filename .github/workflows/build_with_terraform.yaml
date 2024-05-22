@@ -1,4 +1,4 @@
-name: terraform fargate github actions
+name: terraform fargate apply
 
 on: 
   workflow_dispatch:
