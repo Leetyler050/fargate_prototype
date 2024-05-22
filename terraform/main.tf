@@ -2,7 +2,7 @@
 #use the infrastructure module
 module "infrastructure" {
   source                     = "../modules/infrastructure"
-  vpc_cidr                   = "10.0.0.0/17"
+  vpc_cidr                   = "10.0.0.0/19"
   aws_region                 = "us-west-2"
   project_name               = "github-actions-terraform-docker-ecr-ecs-fargate"
   infrastructure_environment = "development"
@@ -22,8 +22,9 @@ module "platform" {
   ecs_cluster_name           = "git-act-ter-dock-ecr-ecs-far"
   vpc_id                     = module.infrastructure.vpc_id
   internet_cidr_blocks       = "0.0.0.0/0"#module.infrastructure.vpc_cidr
-  domain_name                = "leetyler050.com"
+  # domain_name                = "leetyler050.com"
   public_subnet_set          = module.infrastructure.public_subnets
+  docker_container_port      = 8050
 }
 
 #use the app_infrastructure module
@@ -42,4 +43,5 @@ module "app_infra" {
   domain_name = module.platform.domain_name
   ecr_repo_name = "ecr-fargate_test"
   project_name = "fargate_test"
+  aws_lb_ecs_cluster_lb_arn = module.platform.aws_lb_ecs_cluster_lb_ar
 }

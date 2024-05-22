@@ -1,6 +1,7 @@
 resource "aws_lb" "ecs_cluster_lb" {
     name            = "lb-${var.ecs_cluster_name}"
     internal        = false
+    load_balancer_type = "application"
     security_groups = [aws_security_group.ecs_lb_security_group.id]
     #subnets = [for subnet in aws_subnet.public : subnet.id]
     subnets         = var.public_subnet_set
@@ -27,9 +28,10 @@ resource "aws_lb" "ecs_cluster_lb" {
 
 resource "aws_lb_target_group" "ecs_cluster_target_group" {
     name = "tg-${var.ecs_cluster_name}"
-    port = 80
+    port = var.docker_container_port
     protocol = "HTTP"
     vpc_id = var.vpc_id
+    target_type = "ip"
 
     tags = {
         Name = "target-group-${var.ecs_cluster_name}"

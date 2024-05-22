@@ -80,3 +80,8 @@ variable "region" {
     type        = string
     default    = "us-west-2"
 }
+
+variable "aws_lb_ecs_cluster_lb_arn" {
+    description = "The ARN of the load balancer"
+    type        = string
+}

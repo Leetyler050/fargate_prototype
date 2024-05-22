@@ -8,9 +8,9 @@ variable "internet_cidr_blocks" {
 #   default=[" 
 }
 
-variable "domain_name" {
-    type = string
-}
+# variable "domain_name" {
+#     type = string
+# }   
 
 variable "vpc_id" {
     type = string
@@ -20,3 +20,6 @@ variable "public_subnet_set" {
     type = set(string)
 }
 
+variable "docker_container_port" {
+    type = number
+}

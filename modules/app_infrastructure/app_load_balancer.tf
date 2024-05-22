@@ -35,18 +35,17 @@ resource "aws_lb_target_group" "ecs_app_target_group" {
 # }
 
 
+resource "aws_lb_listener" "ecs_lb_listener_rule" {
+    # load_balancer_arn = aws_lb.app_lb.arn
+    load_balancer_arn = var.aws_lb_ecs_cluster_lb_arn
+    port = 80
+    protocol = "HTTP"
+    default_action {
+        type = "forward"
+        target_group_arn = aws_lb_target_group.ecs_app_target_group.arn
+    }
 
-# resource "aws_lb_listener" "ecs_lb_listener_rule" {
-#     load_balancer_arn = aws_lb.app_lb.arn
-
-#     port = 80
-#     protocol = "HTTP"
-#     default_action {
-#         type = "forward"
-#         target_group_arn = aws_lb_target_group.ecs_app_target_group.arn
-#     }
-
-# }
+}
 
 # resource "aws_lb" "app_lb" {
 #     name               = "fargate-lb-${var.ecs_service_name}"

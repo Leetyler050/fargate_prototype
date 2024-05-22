@@ -61,9 +61,3 @@ resource "aws_route_table_association" "private" {
 
   route_table_id = aws_route_table.private_rt.id
 }
-
-# # Create security group for EKS cluster
-# resource "aws_security_group" "eks_cluster" {
-#   vpc_id = aws_vpc.vpc.id
-
-# }

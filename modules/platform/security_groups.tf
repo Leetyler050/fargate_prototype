@@ -5,8 +5,8 @@ resource "aws_security_group" "ecs_lb_security_group" {
 
 
     ingress {
-        from_port   = 443
-        to_port     = 443
+        from_port   = 443 #80
+        to_port     = 443 #80
         protocol    = "TCP"
         cidr_blocks = [var.internet_cidr_blocks]
     }
