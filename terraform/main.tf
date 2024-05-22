@@ -40,8 +40,8 @@ module "app_infra" {
   ecs_cluster_id = module.platform.ecs_cluster_id
   public_subnet_set = module.infrastructure.public_subnets
   private_subnet_set = module.infrastructure.private_subnets
-  domain_name = module.platform.domain_name
+  # domain_name = module.platform.domain_name
   ecr_repo_name = "ecr-fargate_test"
   project_name = "fargate_test"
-  aws_lb_ecs_cluster_lb_arn = module.platform.aws_lb_ecs_cluster_lb_ar
+  aws_lb_ecs_cluster_lb_arn = module.platform.aws_lb_ecs_cluster_lb_arn
 }
