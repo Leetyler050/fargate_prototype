@@ -37,7 +37,7 @@ module "app_infra" {
   vpc_id = module.infrastructure.vpc_id
   vpc_cidr_blocks = module.infrastructure.vpc_cidr
   desired_task_number = 1
-  ecs_cluster_name = module.platform.ecs_cluster_name
+  ecs_cluster_id = module.platform.ecs_cluster_id
   public_subnet_set = module.infrastructure.public_subnets
   private_subnet_set = module.infrastructure.private_subnets
   domain_name = module.platform.domain_name

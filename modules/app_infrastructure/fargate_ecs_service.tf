@@ -2,7 +2,7 @@ resource "aws_ecs_service" "ecs_service" {
     name            = var.ecs_service_name
     task_definition = var.ecs_service_name
     desired_count   = var.desired_task_number
-    cluster        = var.ecs_cluster_name
+    cluster        = var.ecs_cluster_id
     launch_type     = "FARGATE"
 
     network_configuration {

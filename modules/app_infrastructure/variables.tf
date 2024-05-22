@@ -40,7 +40,7 @@ variable "desired_task_number" {
     type        = number
 }
 
-variable "ecs_cluster_name" {
+variable "ecs_cluster_id" {
     description = "The name of the ECS cluster"
     type        = string
 }
