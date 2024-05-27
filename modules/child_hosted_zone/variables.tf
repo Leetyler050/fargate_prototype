@@ -18,13 +18,13 @@ variable "load_balancer_arn" {
     type        = string
 }
 
-variable "target_group_arn" {
-    description = "The target group ARN"
+variable "load_balancer_target_group_arn" {
+    description = "The load balancer target group ARN"
     type        = string
 }
 
 variable "aws_lb_target_group_ecs_app_target_group_arn" {
-    description = "The target group ARN"
+    description = "The target group ARN for the app"
     type        = string
 }
 

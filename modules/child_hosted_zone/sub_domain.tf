@@ -5,13 +5,13 @@ data "aws_route53_zone" "parent_domain" {
   private_zone  = false
 }
 
-#child hosted zone
+#child hosted zone creation
 resource "aws_route53_zone" "sub_domain" {
   name          = var.sub_domain_name
-
 }
 
-resource "aws_route53_record" "dev-ns" {
+#make a name server record in the parent hosted zone
+resource "aws_route53_record" "test_name_server" {
   zone_id = data.aws_route53_zone.parent_domain.zone_id
   name    = var.sub_domain_name
   type    = "NS"
