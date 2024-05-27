@@ -3,10 +3,10 @@
 #     type        = string
 # }
 
-# variable "main_domain_name" {
-#     description = "The domain name"
-#     type        = string
-# }
+variable "main_domain_name" {
+    description = "The domain name"
+    type        = string
+}
 
 variable "sub_domain_name" {
     description = "The sub domain name"

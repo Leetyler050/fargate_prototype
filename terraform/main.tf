@@ -48,6 +48,7 @@ module "app_infra" {
 
 module "child_hosted_zone" {
   source                            = "../modules/child_hosted_zone"
+  main_domain_name                  = "leetyler050.com"
   sub_domain_name                   = "test.leetyler050.com"
   #route53_zone_id = module.platform.route_53_main_zone_id
   load_balancer_arn                 = module.platform.load_balancer_arn

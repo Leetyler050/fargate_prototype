@@ -31,7 +31,7 @@ resource "aws_acm_certificate" "sub_domain_certificate" {
 resource "aws_route53_record" "sub_domain_cert_validation_record" {
   name    = tolist(aws_acm_certificate.sub_domain_certificate.domain_validation_options)[0].resource_record_name
   type    = tolist(aws_acm_certificate.sub_domain_certificate.domain_validation_options)[0].resource_record_type
-  zone_id = data.aws_route53_zone.sub_domain.zone_id
+  zone_id = aws_route53_zone.sub_domain.zone_id
   records = [tolist(aws_acm_certificate.sub_domain_certificate.domain_validation_options)[0].resource_record_value]
   ttl     = 60
   allow_overwrite = true   
