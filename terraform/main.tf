@@ -47,9 +47,12 @@ module "app_infra" {
 }
 
 module "child_hosted_zone" {
-  source          = "../modules/child_hosted_zone"
-  domain_name     = "test.leetyler050.com"
-  route53_zone_id = module.platform.route_53_main_zone_id
-  load_balancer_arn = module.platform.load_balancer_arn
-  target_group_arn = module.platform.aws_lb_target_group_ecs_cluster_target_group_arn
+  source                            = "../modules/child_hosted_zone"
+  sub_domain_name                   = "test.leetyler050.com"
+  #route53_zone_id = module.platform.route_53_main_zone_id
+  load_balancer_arn                 = module.platform.load_balancer_arn
+  target_group_arn                  = module.platform.aws_lb_target_group_ecs_cluster_target_group_arn
+  aws_lb_target_group_ecs_app_target_group_arn = module.app_infra.aws_lb_target_group_ecs_app_target_group_arn
+  aws_lb_ecs_cluster_lb_dns_name    = module.platform.aws_lb_ecs_cluster_lb_dns_name
+  aws_lb_ecs_cluster_lb_zone_id     = module.platform.aws_lb_ecs_cluster_lb_zone_id
 }

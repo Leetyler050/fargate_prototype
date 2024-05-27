@@ -33,3 +33,11 @@ output "load_balancer_arn" {
 output "aws_lb_target_group_ecs_cluster_target_group_arn" {
     value = aws_lb_target_group.ecs_cluster_target_group.arn
 }
+
+output "aws_lb_ecs_cluster_lb_dns_name" {
+    value = aws_lb.ecs_cluster_lb.dns_name
+}
+
+output "aws_lb_ecs_cluster_lb_zone_id" {
+    value = aws_lb.ecs_cluster_lb.zone_id
+}
