@@ -23,6 +23,7 @@ module "platform" {
   vpc_id                     = module.infrastructure.vpc_id
   internet_cidr_blocks       = "0.0.0.0/0"#module.infrastructure.vpc_cidr
   domain_name                = "leetyler050.com"
+  sub_domain                 = "test.leetyler050.com"
   public_subnet_set          = module.infrastructure.public_subnets
 }
 
@@ -43,4 +44,12 @@ module "app_infra" {
   domain_name = module.platform.domain_name
   ecr_repo_name = "ecr-fargate_test"
   project_name = "fargate_test"
+}
+
+module "child_hosted_zone" {
+  source          = "../modules/child_hosted_zone"
+  domain_name     = "test.leetyler050.com"
+  route53_zone_id = module.platform.route_53_main_zone_id
+  load_balancer_arn = module.platform.load_balancer_arn
+  target_group_arn = module.platform.aws_lb_target_group_ecs_cluster_target_group_arn
 }

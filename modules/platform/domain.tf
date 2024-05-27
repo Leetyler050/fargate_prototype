@@ -18,13 +18,7 @@ resource "aws_route53_record" "ecs_cert_validation_record" {
   zone_id = data.aws_route53_zone.ecs_domain.zone_id
   records = [tolist(aws_acm_certificate.ecs_domain_certificate.domain_validation_options)[0].resource_record_value]
   ttl     = 60
-  allow_overwrite = true
-
-#   alias {
-#     name                   = aws_lb.ecs_cluster_lb.dns_name
-#     zone_id                = aws_lb.ecs_cluster_lb.zone_id
-#     evaluate_target_health = true
-#   }
+  allow_overwrite = true   
 }
 
 resource "aws_acm_certificate_validation" "ecs_domain_certificate_validation" {

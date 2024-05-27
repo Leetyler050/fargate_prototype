@@ -22,6 +22,14 @@ output "ecslb_target_group_arn" {
     value = aws_lb_target_group.ecs_cluster_target_group.arn
 }
 
-# output "ecs_cluster_lb_arn" {
-#     value = aws_lb.app_lb.arn
-# }
+output "route_53_main_zone_id" {
+    value = aws_route53_zone.ecs_domain.id
+}
+
+output "load_balancer_arn" {
+    value = aws_lb.ecs_cluster_lb.arn
+}
+
+output "aws_lb_target_group_ecs_cluster_target_group_arn" {
+    value = aws_lb_target_group.ecs_cluster_target_group.arn
+}
