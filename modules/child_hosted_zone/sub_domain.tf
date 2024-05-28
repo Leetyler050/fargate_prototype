@@ -46,7 +46,7 @@ resource "aws_route53_record" "sub_domain_load_balancer_record" {
     name = var.sub_domain_name
     type = "A"
     zone_id = aws_route53_zone.sub_domain.zone_id
-    ttl = "360"
+    
     alias {
         name = var.aws_lb_ecs_cluster_lb_dns_name
         zone_id = var.aws_lb_ecs_cluster_lb_zone_id
