@@ -15,7 +15,7 @@ resource "aws_route53_record" "ns_record_test" {
   zone_id = data.aws_route53_zone.parent_domain.zone_id
   name    = "test"
   type    = "NS"
-  ttl     = 60
+  ttl     = "60"
   records = aws_route53_zone.sub_domain.name_servers
 }
 
@@ -33,7 +33,7 @@ resource "aws_route53_record" "sub_domain_cert_validation_record" {
   type    = tolist(aws_acm_certificate.sub_domain_certificate.domain_validation_options)[0].resource_record_type
   zone_id = aws_route53_zone.sub_domain.zone_id
   records = [tolist(aws_acm_certificate.sub_domain_certificate.domain_validation_options)[0].resource_record_value]
-  ttl     = 60
+  ttl     = "60"
   allow_overwrite = true   
 }
 
@@ -46,7 +46,7 @@ resource "aws_route53_record" "sub_domain_load_balancer_record" {
     name = var.sub_domain_name
     type = "A"
     zone_id = aws_route53_zone.sub_domain.zone_id
-    ttl = 360
+    ttl = "360"
     alias {
         name = var.aws_lb_ecs_cluster_lb_dns_name
         zone_id = var.aws_lb_ecs_cluster_lb_zone_id
