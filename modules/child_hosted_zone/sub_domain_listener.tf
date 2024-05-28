@@ -22,7 +22,7 @@ resource "aws_lb_listener_rule" "ecs_lb_listener_rule" {
     }
     condition {
         host_header {
-            values = ["sub-domain-test.${var.sub_domain_name}"]
+            values = ["app.${var.sub_domain_name}"]
     }
     }
 }
