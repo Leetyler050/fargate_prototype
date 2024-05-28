@@ -12,17 +12,17 @@ resource "aws_lb_listener" "sub_domain_ecs_lb_https_listener" {
     }
 }
 
-##listener rule
-resource "aws_lb_listener_rule" "ecs_lb_listener_rule" {
-    listener_arn = aws_lb_listener.sub_domain_ecs_lb_https_listener.arn
+##listener rule commenting out for now
+# resource "aws_lb_listener_rule" "ecs_lb_listener_rule" {
+#     listener_arn = aws_lb_listener.sub_domain_ecs_lb_https_listener.arn
 
-    action {
-        type             = "forward"
-        target_group_arn = var.aws_lb_target_group_ecs_app_target_group_arn
-    }
-    condition {
-        host_header {
-            values = ["app.${var.sub_domain_name}"]
-    }
-    }
-}
+#     action {
+#         type             = "forward"
+#         target_group_arn = var.aws_lb_target_group_ecs_app_target_group_arn
+#     }
+#     condition {
+#         host_header {
+#             values = ["app.${var.sub_domain_name}"]
+#     }
+#     }
+# }
