@@ -56,7 +56,7 @@ resource "aws_acm_certificate_validation" "sub_domain_certificate_validation" {
 
 resource "aws_route53_record" "cname_load_balancer_record" {
   zone_id =  aws_route53_zone.sub_domain.zone_id # Replace with your zone ID
-  name    = "*.${var.sub_domain_name}" # Replace with your subdomain, Note: not valid with "apex" domains, e.g. example.com
+  name    = "app.${var.sub_domain_name}" # Replace with your subdomain, Note: not valid with "apex" domains, e.g. example.com
   type    = "CNAME"
   ttl     = "60"
   records = [var.aws_lb_ecs_cluster_lb_dns_name]
