@@ -31,7 +31,7 @@ resource "aws_lb_listener_rule" "ecs_lb_listener_rule" {
     condition {
         host_header {
             #values = ["${lower(var.ecs_service_name)}.${var.domain_name}"]
-            values = "fargate-app.${var.domain_name}"
+            values = ["fargate-app.${var.domain_name}"]
     }
     }
 }
