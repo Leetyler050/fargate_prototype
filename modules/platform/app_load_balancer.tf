@@ -9,20 +9,20 @@ resource "aws_lb" "ecs_cluster_lb" {
     }
 }
 
-# resource "aws_lb_listener" "ecs_lb_https_listener" {
-#     load_balancer_arn = aws_lb.ecs_cluster_lb.arn
-#     port = 8443
-#     protocol = "HTTPS"
-#     ssl_policy = "ELBSecurityPolicy-TLS13-1-2-2021-06"
-#     certificate_arn = aws_acm_certificate.ecs_domain_certificate.arn
+resource "aws_lb_listener" "ecs_lb_https_listener" {
+    load_balancer_arn = aws_lb.ecs_cluster_lb.arn
+    port = 8442
+    protocol = "HTTPS"
+    ssl_policy = "ELBSecurityPolicy-TLS13-1-2-2021-06"
+    certificate_arn = aws_acm_certificate.ecs_domain_certificate.arn
 
-#     default_action {
-#         type = "forward"
-#         target_group_arn = aws_lb_target_group.ecs_cluster_target_group.arn
-#     }
+    default_action {
+        type = "forward"
+        target_group_arn = aws_lb_target_group.ecs_cluster_target_group.arn
+    }
 
-#     depends_on  = [aws_lb_target_group.ecs_cluster_target_group]
-# }
+    depends_on  = [aws_lb_target_group.ecs_cluster_target_group]
+}
 
 resource "aws_lb_target_group" "ecs_cluster_target_group" {
     name = "tg-${var.ecs_cluster_name}"
