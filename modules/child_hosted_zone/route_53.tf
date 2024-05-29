@@ -15,7 +15,7 @@ resource "aws_route53_record" "ns_record_test" {
   name    = var.sub_domain_name
   type    = "NS"
   ttl     = "300"
-  records = [aws_route53_zone.sub_domain.name_servers]
+  records = ["${aws_route53_zone.sub_domain.name_servers}"]
 }
 
 # resource "aws_route53_record" "sub_domain_cert_validation_record" {
