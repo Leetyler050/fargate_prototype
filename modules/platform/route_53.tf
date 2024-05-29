@@ -14,7 +14,7 @@ data "aws_route53_zone" "ecs_domain" {
 
 resource "aws_route53_record" "ecs_cert_validation_record" {
   for_each = {
-    for dvo in aws_acm_certificate.ecs_domain.domain_validation_options : dvo.domain_name => {
+    for dvo in aws_acm_certificate.ecs_domain_certificate.domain_validation_options : dvo.domain_name => {
       name   = dvo.resource_record_name
       record = dvo.resource_record_value
       type   = dvo.resource_record_type
@@ -26,7 +26,7 @@ resource "aws_route53_record" "ecs_cert_validation_record" {
   records         = [each.value.record]
   ttl             = 60
   type            = each.value.type
-  zone_id         = aws_route53_zone.ecs_domain.zone_id
+  zone_id         = data.aws_route53_zone.ecs_domain.zone_id
 }
 
 resource "aws_route53_record" "ecs_load_balancer_record" {
