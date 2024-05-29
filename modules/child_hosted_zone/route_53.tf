@@ -45,7 +45,7 @@ resource "aws_route53_record" "sub_domain_cert_validation_record" {
 }
 
 resource "aws_route53_record" "sub_domain_load_balancer_record" {
-    name = "${var.sub_domain_name}.${var.main_domain_name}"
+    name = "sub-fargate-app.${var.sub_domain_name}.${var.main_domain_name}"
     type = "A"
     zone_id = aws_route53_zone.sub_domain.zone_id
 

@@ -22,7 +22,7 @@ resource "aws_lb_listener_rule" "ecs_lb_listener_rule" {
     }
     condition {
         host_header {
-            values = ["app.${var.sub_domain_name}"]
+            values = ["sub-fargate-app.${var.sub_domain_name}.${var.main_domain_name}"]
     }
     }
 }

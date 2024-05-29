@@ -30,7 +30,7 @@ resource "aws_route53_record" "ecs_cert_validation_record" {
 }
 
 resource "aws_route53_record" "ecs_load_balancer_record" {
-    name = var.domain_name
+    name = "fargate-app.${var.domain_name}"
     type = "A"
     zone_id = data.aws_route53_zone.ecs_domain.zone_id
 
